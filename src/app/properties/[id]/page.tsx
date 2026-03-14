@@ -199,8 +199,16 @@ export default function PropertyDetailPage() {
               <div>
                 <h2 className="heading-section text-charcoal mb-4">Location</h2>
                 <p className="text-body text-slate font-inter font-light mb-6">{fullAddress}</p>
-                <div className="bg-beige/50 h-[300px] flex items-center justify-center text-small text-slate font-inter">
-                  Map integration available with Google Maps API key
+                <div className="overflow-hidden h-[360px]">
+                  <iframe
+                    title="Property location"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed&z=15`}
+                  />
                 </div>
               </div>
             </motion.div>

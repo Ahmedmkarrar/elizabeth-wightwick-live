@@ -5,126 +5,351 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { mockProperties } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
+import Modal from '@/components/ui/Modal';
+import Button from '@/components/ui/Button';
+import type { Property, PropertyStatus } from '@/types';
+import {
+  MagnifyingGlassIcon,
+  PencilSquareIcon,
+  TrashIcon,
+  ArrowTopRightOnSquareIcon,
+  StarIcon,
+  CheckIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
+import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
+
+const STATUS_OPTIONS: { value: PropertyStatus; label: string }[] = [
+  { value: 'available', label: 'Available' },
+  { value: 'under_offer', label: 'Under Offer' },
+  { value: 'let_agreed', label: 'Let Agreed' },
+  { value: 'sold', label: 'Sold' },
+];
+
+const STATUS_COLORS: Record<PropertyStatus, string> = {
+  available: 'bg-emerald-50 text-emerald-700',
+  under_offer: 'bg-amber-50 text-amber-700',
+  let_agreed: 'bg-blue-50 text-blue-700',
+  sold: 'bg-slate/10 text-slate',
+};
 
 export default function AdminPropertiesPage() {
-  const [filter, setFilter] = useState<string>('all');
+  const [properties, setProperties] = useState<Property[]>(() =>
+    mockProperties.map((p) => ({ ...p }))
+  );
+  const [deptFilter, setDeptFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
   const [search, setSearch] = useState('');
+  const [statusLoading, setStatusLoading] = useState<string | null>(null);
+  const [statusSuccess, setStatusSuccess] = useState<string | null>(null);
+  const [featuredLoading, setFeaturedLoading] = useState<string | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
-  const filtered = mockProperties.filter((p) => {
-    if (filter !== 'all' && p.department !== filter) return false;
-    if (search && !p.address_line_1.toLowerCase().includes(search.toLowerCase())) return false;
+  const filtered = properties.filter((p) => {
+    if (deptFilter !== 'all' && p.department !== deptFilter) return false;
+    if (statusFilter !== 'all' && p.status !== statusFilter) return false;
+    if (
+      search &&
+      !p.address_line_1.toLowerCase().includes(search.toLowerCase()) &&
+      !p.city.toLowerCase().includes(search.toLowerCase()) &&
+      !p.postcode.toLowerCase().includes(search.toLowerCase())
+    )
+      return false;
     return true;
   });
 
+  const handleStatusChange = async (id: string, newStatus: PropertyStatus) => {
+    setStatusLoading(id);
+    await new Promise((r) => setTimeout(r, 600));
+    setProperties((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, status: newStatus } : p))
+    );
+    setStatusLoading(null);
+    setStatusSuccess(id);
+    setTimeout(() => setStatusSuccess(null), 1500);
+  };
+
+  const handleFeaturedToggle = async (id: string, current: boolean) => {
+    setFeaturedLoading(id);
+    await new Promise((r) => setTimeout(r, 400));
+    setProperties((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, featured: !current } : p))
+    );
+    setFeaturedLoading(null);
+  };
+
+  const handleDelete = () => {
+    if (!deleteId) return;
+    setProperties((prev) => prev.filter((p) => p.id !== deleteId));
+    setDeleteId(null);
+  };
+
   return (
     <div>
+      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="heading-title text-charcoal">Properties</h1>
-          <p className="text-small text-slate font-inter mt-1">{filtered.length} properties</p>
+          <p className="text-[11px] font-inter uppercase tracking-[0.2em] text-slate/60 mb-1">Manage</p>
+          <h1 className="font-cormorant text-[2rem] font-light text-charcoal">Properties</h1>
+          <p className="text-[12px] font-inter text-slate/50 mt-1">
+            {filtered.length} of {properties.length} properties
+          </p>
         </div>
         <Link
           href="/admin/properties/new"
-          className="bg-brand text-white px-6 py-3 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
+          className="inline-flex items-center gap-2 bg-brand text-white px-5 py-2.5 text-[12px] font-inter font-medium tracking-[0.08em] uppercase hover:bg-brand-dark transition-colors"
         >
-          + Add Property
+          <PlusIcon className="w-4 h-4" />
+          Add Property
         </Link>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <div className="flex border border-taupe/40">
-          {['all', 'sales', 'lettings'].map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={cn(
-                'px-4 py-2 text-small font-inter capitalize transition-all',
-                filter === f ? 'bg-charcoal text-white' : 'bg-white text-charcoal hover:bg-cream'
-              )}
-            >
-              {f === 'all' ? 'All' : f}
-            </button>
-          ))}
+      {/* Search + Filters */}
+      <div className="bg-white border border-beige/80 p-4 mb-6 flex flex-col gap-3">
+        {/* Search */}
+        <div className="relative">
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate/40" />
+          <input
+            type="text"
+            placeholder="Search by address, city or postcode..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-9 pr-4 py-2.5 border border-beige text-[13px] font-inter text-charcoal placeholder:text-slate/30 focus:outline-none focus:border-brand/50 transition-colors"
+          />
         </div>
-        <input
-          type="search"
-          placeholder="Search by address..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="bg-white border border-taupe/40 px-4 py-2 text-small font-inter text-charcoal focus:outline-none focus:border-charcoal flex-1"
-        />
+
+        <div className="flex flex-wrap gap-3">
+          {/* Department filter */}
+          <div className="flex border border-beige overflow-hidden">
+            {(['all', 'sales', 'lettings'] as const).map((f) => (
+              <button
+                key={f}
+                onClick={() => setDeptFilter(f)}
+                className={cn(
+                  'px-3 py-1.5 text-[11px] font-inter font-medium uppercase tracking-wider transition-colors',
+                  deptFilter === f
+                    ? 'bg-charcoal text-white'
+                    : 'bg-white text-slate hover:bg-cream'
+                )}
+              >
+                {f === 'all' ? 'All' : f}
+              </button>
+            ))}
+          </div>
+
+          {/* Status filter */}
+          <div className="flex border border-beige overflow-hidden">
+            {[
+              { v: 'all', l: 'Any Status' },
+              { v: 'available', l: 'Available' },
+              { v: 'under_offer', l: 'Under Offer' },
+              { v: 'let_agreed', l: 'Let Agreed' },
+              { v: 'sold', l: 'Sold' },
+            ].map((s) => (
+              <button
+                key={s.v}
+                onClick={() => setStatusFilter(s.v)}
+                className={cn(
+                  'px-3 py-1.5 text-[11px] font-inter font-medium uppercase tracking-wider transition-colors border-r border-beige last:border-r-0',
+                  statusFilter === s.v
+                    ? 'bg-charcoal text-white'
+                    : 'bg-white text-slate hover:bg-cream'
+                )}
+              >
+                {s.l}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Table */}
-      <div className="bg-white overflow-x-auto">
+      <div className="bg-white border border-beige/80 overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-taupe/20">
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Image</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Address</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Department</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Price</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Status</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Featured</th>
-              <th className="text-left py-3 px-4 text-tiny font-inter font-medium uppercase tracking-widest text-slate">Actions</th>
+            <tr className="border-b border-beige/60">
+              <th className="text-left py-3.5 px-4 text-[10px] font-inter font-medium uppercase tracking-[0.15em] text-slate/50">
+                Property
+              </th>
+              <th className="text-left py-3.5 px-4 text-[10px] font-inter font-medium uppercase tracking-[0.15em] text-slate/50">
+                Status — click to change
+              </th>
+              <th className="text-left py-3.5 px-4 text-[10px] font-inter font-medium uppercase tracking-[0.15em] text-slate/50 hidden md:table-cell">
+                Dept
+              </th>
+              <th className="text-left py-3.5 px-4 text-[10px] font-inter font-medium uppercase tracking-[0.15em] text-slate/50 hidden lg:table-cell">
+                Price
+              </th>
+              <th className="text-right py-3.5 px-4 text-[10px] font-inter font-medium uppercase tracking-[0.15em] text-slate/50">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((property) => (
-              <tr key={property.id} className="border-b border-taupe/10 hover:bg-cream/50 transition-colors">
+              <tr
+                key={property.id}
+                className="border-b border-beige/30 hover:bg-cream/30 transition-colors"
+              >
+                {/* Property */}
                 <td className="py-3 px-4">
-                  <div className="relative w-16 h-12 overflow-hidden bg-beige">
-                    <Image src={property.main_image} alt="" fill className="object-cover" sizes="64px" />
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-14 h-10 overflow-hidden bg-beige flex-shrink-0">
+                      <Image
+                        src={property.main_image}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="56px"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[13px] font-inter text-charcoal font-medium truncate max-w-[160px] lg:max-w-[260px]">
+                        {property.address_line_1}
+                      </p>
+                      <p className="text-[11px] font-inter text-slate/50">
+                        {property.city}, {property.postcode}
+                      </p>
+                    </div>
                   </div>
                 </td>
-                <td className="py-3 px-4 text-small font-inter text-charcoal">
-                  {property.address_line_1}
-                  <span className="block text-tiny text-slate">{property.postcode}</span>
-                </td>
-                <td className="py-3 px-4 text-small font-inter text-slate capitalize">{property.department}</td>
-                <td className="py-3 px-4 text-small font-inter text-charcoal">
-                  £{property.price.toLocaleString()}{property.rent_period ? ' pcm' : ''}
-                </td>
+
+                {/* One-click status change */}
                 <td className="py-3 px-4">
-                  <span className={`inline-block px-2 py-1 text-[10px] font-inter font-medium uppercase tracking-wider ${
-                    property.status === 'available' ? 'bg-brand-dark/10 text-brand-dark' :
-                    property.status === 'let_agreed' ? 'bg-brand/10 text-brand-dark' :
-                    property.status === 'under_offer' ? 'bg-brand/10 text-brand-dark' :
-                    'bg-slate/10 text-slate'
-                  }`}>
-                    {property.status.replace('_', ' ')}
-                  </span>
-                </td>
-                <td className="py-3 px-4 text-small font-inter">
-                  {property.featured ? (
-                    <span className="text-brand">Yes</span>
+                  {statusLoading === property.id ? (
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-inter bg-slate/5 text-slate/60">
+                      <svg className="animate-spin w-3 h-3" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Saving...
+                    </span>
+                  ) : statusSuccess === property.id ? (
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-inter bg-emerald-50 text-emerald-700">
+                      <CheckIcon className="w-3 h-3" />
+                      Saved!
+                    </span>
                   ) : (
-                    <span className="text-slate/40">No</span>
+                    <select
+                      value={property.status}
+                      onChange={(e) =>
+                        handleStatusChange(property.id, e.target.value as PropertyStatus)
+                      }
+                      className={cn(
+                        'appearance-none cursor-pointer px-2.5 py-1 text-[10px] font-inter font-semibold uppercase tracking-wider border-0 focus:outline-none focus:ring-1 focus:ring-brand/20',
+                        STATUS_COLORS[property.status]
+                      )}
+                    >
+                      {STATUS_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
                   )}
                 </td>
+
+                {/* Department */}
+                <td className="py-3 px-4 hidden md:table-cell">
+                  <span className="text-[11px] font-inter text-slate capitalize bg-beige/50 px-2 py-0.5">
+                    {property.department}
+                  </span>
+                </td>
+
+                {/* Price */}
+                <td className="py-3 px-4 hidden lg:table-cell">
+                  <span className="text-[13px] font-inter text-charcoal font-medium">
+                    £{property.price.toLocaleString()}
+                    {property.rent_period ? ' pcm' : ''}
+                  </span>
+                </td>
+
+                {/* Actions */}
                 <td className="py-3 px-4">
-                  <div className="flex gap-3">
+                  <div className="flex items-center justify-end gap-0.5">
+                    {/* Featured toggle */}
+                    <button
+                      onClick={() => handleFeaturedToggle(property.id, property.featured)}
+                      disabled={featuredLoading === property.id}
+                      title={property.featured ? 'Remove from featured' : 'Add to featured'}
+                      className={cn(
+                        'p-2 rounded transition-colors disabled:opacity-40',
+                        property.featured
+                          ? 'text-amber-500 hover:text-amber-600 hover:bg-amber-50'
+                          : 'text-slate/30 hover:text-amber-500 hover:bg-amber-50'
+                      )}
+                    >
+                      {property.featured ? (
+                        <StarIconSolid className="w-4 h-4" />
+                      ) : (
+                        <StarIcon className="w-4 h-4" />
+                      )}
+                    </button>
+
+                    {/* Edit */}
                     <Link
                       href={`/admin/properties/${property.id}/edit`}
-                      className="text-tiny font-inter text-charcoal hover:text-brand transition-colors"
+                      className="p-2 text-slate/40 hover:text-brand hover:bg-brand/5 rounded transition-colors"
+                      title="Edit property"
                     >
-                      Edit
+                      <PencilSquareIcon className="w-4 h-4" />
                     </Link>
-                    <Link
+
+                    {/* View on site */}
+                    <a
                       href={`/properties/${property.id}`}
-                      className="text-tiny font-inter text-slate hover:text-charcoal transition-colors"
                       target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-slate/40 hover:text-charcoal hover:bg-beige rounded transition-colors"
+                      title="View on site"
                     >
-                      View
-                    </Link>
+                      <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                    </a>
+
+                    {/* Delete */}
+                    <button
+                      onClick={() => setDeleteId(property.id)}
+                      className="p-2 text-slate/30 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
+                      title="Delete property"
+                    >
+                      <TrashIcon className="w-4 h-4" />
+                    </button>
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {filtered.length === 0 && (
+          <div className="text-center py-16 text-slate/40 font-inter text-[13px]">
+            No properties found.
+          </div>
+        )}
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <Modal
+        isOpen={!!deleteId}
+        onClose={() => setDeleteId(null)}
+        title="Delete Property"
+        size="sm"
+      >
+        <p className="text-body text-slate font-inter font-light mb-6">
+          Are you sure you want to delete this property? This action cannot be undone.
+        </p>
+        <div className="flex gap-3 justify-end">
+          <Button variant="secondary" onClick={() => setDeleteId(null)}>
+            Cancel
+          </Button>
+          <button
+            onClick={handleDelete}
+            className="bg-red-600 text-white px-5 py-2.5 text-[12px] font-inter font-medium uppercase tracking-wider hover:bg-red-700 transition-colors"
+          >
+            Delete
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

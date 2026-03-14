@@ -18,6 +18,7 @@ const navLinks = [
       { href: '/homeowners/buying-with-us', label: 'Buying With Us' },
       { href: '/homeowners/property-management', label: 'Property Management' },
       { href: '/homeowners/preparing-to-list', label: 'Preparing to List Your Home' },
+      { href: '/property-finder', label: 'Property Finder Service' },
     ],
   },
   { href: '/who-we-are', label: 'Who We Are' },

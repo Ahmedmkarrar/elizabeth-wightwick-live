@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { sendInquiryNotification } from '@/lib/email';
 
 export async function GET() {
   const { data, error } = await supabase
@@ -17,7 +18,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  const { name, email, phone, message, type, property_id, preferred_time } = body;
+  const { name, email, phone, message, type, property_id, property_address, preferred_time } = body;
 
   if (!name || !email || !type) {
     return NextResponse.json(
@@ -42,8 +43,13 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    // Still send email even if DB write fails (e.g. table not yet created)
+    await sendInquiryNotification({ name, email, phone, message, type, property_id, property_address, preferred_time }).catch(() => {});
+    return NextResponse.json({ success: true, warning: error.message }, { status: 201 });
   }
+
+  // Send email notification (non-blocking)
+  sendInquiryNotification({ name, email, phone, message, type, property_id, property_address, preferred_time }).catch(() => {});
 
   return NextResponse.json(data, { status: 201 });
 }

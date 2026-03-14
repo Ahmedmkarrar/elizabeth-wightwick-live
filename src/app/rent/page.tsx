@@ -5,6 +5,7 @@ import { mockProperties } from '@/lib/mock-data';
 import PropertyGrid from '@/components/properties/PropertyGrid';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import ScrollingReviews from '@/components/rent/ScrollingReviews';
 
 const bedroomOptions = [
   { value: '', label: 'Any Beds' },
@@ -130,6 +131,9 @@ export default function RentPage() {
           <PropertyGrid properties={properties} columns={3} />
         </div>
       </section>
+
+      {/* Scrolling Tenant Reviews */}
+      <ScrollingReviews />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { sendValuationNotification } from '@/lib/email';
 
 export async function GET() {
   const { data, error } = await supabase
@@ -43,8 +44,12 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    await sendValuationNotification({ address, property_type, bedrooms, name, email, phone, best_time, additional_info }).catch(() => {});
+    return NextResponse.json({ success: true, warning: error.message }, { status: 201 });
   }
+
+  // Send email notification (non-blocking)
+  sendValuationNotification({ address, property_type, bedrooms, name, email, phone, best_time, additional_info }).catch(() => {});
 
   return NextResponse.json(data, { status: 201 });
 }

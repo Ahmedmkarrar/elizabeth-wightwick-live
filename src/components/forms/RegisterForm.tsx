@@ -8,14 +8,44 @@ import { cn } from '@/lib/utils';
 export default function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [department, setDepartment] = useState<'sales' | 'lettings'>('sales');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
-    setSubmitted(true);
+    setError('');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          department,
+          property_type: data.get('property_type') || undefined,
+          min_bedrooms: data.get('min_bedrooms') || undefined,
+          min_price: data.get('min_price') || undefined,
+          max_price: data.get('max_price') || undefined,
+          locations: data.get('locations') || undefined,
+          name: data.get('name'),
+          email: data.get('email'),
+          phone: data.get('phone') || undefined,
+        }),
+      });
+
+      if (!res.ok && res.status !== 201) {
+        throw new Error('Submission failed');
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again or call us on 0203 597 3484.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -79,6 +109,7 @@ export default function RegisterForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <Select
           id="reg-type"
+          name="property_type"
           label="Property Type"
           options={[
             { value: '', label: 'Any type' },
@@ -89,6 +120,7 @@ export default function RegisterForm() {
         />
         <Select
           id="reg-beds"
+          name="min_bedrooms"
           label="Minimum Bedrooms"
           options={[
             { value: '', label: 'Any' },
@@ -102,12 +134,13 @@ export default function RegisterForm() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <Select id="reg-min-price" label="Minimum Budget" options={priceOptions} />
-        <Select id="reg-max-price" label="Maximum Budget" options={priceOptions} />
+        <Select id="reg-min-price" name="min_price" label="Minimum Budget" options={priceOptions} />
+        <Select id="reg-max-price" name="max_price" label="Maximum Budget" options={priceOptions} />
       </div>
 
       <Input
         id="reg-locations"
+        name="locations"
         label="Preferred Locations"
         placeholder="e.g. Wimbledon Village, Wimbledon Common Side"
       />
@@ -115,10 +148,10 @@ export default function RegisterForm() {
       <div className="divider my-2" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <Input id="reg-name" label="Your Name" placeholder="Full name" required />
-        <Input id="reg-email" label="Email" type="email" placeholder="your@email.com" required />
+        <Input id="reg-name" name="name" label="Your Name" placeholder="Full name" required />
+        <Input id="reg-email" name="email" label="Email" type="email" placeholder="your@email.com" required />
       </div>
-      <Input id="reg-phone" label="Phone" type="tel" placeholder="Your phone number" />
+      <Input id="reg-phone" name="phone" label="Phone" type="tel" placeholder="Your phone number" />
 
       <div className="flex items-start gap-3 pt-2">
         <input type="checkbox" id="gdpr-reg" required className="mt-1 accent-brand" />
@@ -126,6 +159,9 @@ export default function RegisterForm() {
           I consent to Elizabeth Wightwick storing my details and contacting me about properties matching my requirements.
         </label>
       </div>
+      {error && (
+        <p className="text-[13px] font-inter text-red-600">{error}</p>
+      )}
       <Button type="submit" loading={loading} className="w-full md:w-auto">
         Register
       </Button>

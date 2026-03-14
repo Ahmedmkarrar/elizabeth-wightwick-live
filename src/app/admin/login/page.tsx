@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 
-const DEMO_EMAIL = 'admin@elizabeth-wightwick.co.uk';
+const DEMO_EMAIL = 'info@elizabeth-wightwick.co.uk';
 const DEMO_PASSWORD = 'EW2025admin!';
 
 export default function AdminLoginPage() {
