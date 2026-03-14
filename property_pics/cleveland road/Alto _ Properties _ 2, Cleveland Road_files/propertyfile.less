@@ -1,0 +1,481 @@
+.propertyfile-content {
+  max-height: 100%;
+  overflow: auto;
+}
+.propertyfile-content .propertyfile-panel {
+  color: #333333;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  /*Branch Component*/
+
+  /*.toggleColourOverride {
+            input:checked {
+                label:before {
+                    background: @propertyfile-selected-branches-header-colour !important;
+                }
+
+                label:after {
+                    box-shadow: inset 0 0 0 1px @propertyfile-selected-branches-header-colour, 0 2px 4px rgba(0, 0, 0, .2) !important;
+                }
+            }*/
+
+  /*input[id^='propertyfile-status-toggle']:checked + label[id^='propertyfile-status-toggle-label']:before {
+                background: rgba(19, 191, 17, 1);
+            }
+
+            input[id^='propertyfile-status-toggle']:checked + label[id^='propertyfile-status-toggle-label']:after {
+                box-shadow: inset 0 0 0 1px rgba(19, 191, 17, 1), 0 2px 4px rgba(0, 0, 0, .2);
+            }
+        }*/
+
+  /* Icon Classes */
+
+  /* Utility Classes */
+
+  /*Angular Drag and Drop Styles*/
+
+  /*DON'T CHANGE ANY OF THE FOLLOWING STYLES*/
+
+  /*
+
+     * For the correct positioning of the placeholder element, the dnd-list and
+     * it's children must have position: relative
+     */
+
+  /**
+     * The dnd-list should always have a min-height,
+     * otherwise you can't drop to it once it's empty
+     */
+
+  /*
+     * The dndDraggingSource class will be applied to
+     * the source element of a drag operation. It makes
+     * sense to hide it to give the user the feeling
+     * that he's actually moving it.
+     */
+
+  /*
+     * An element with .dndPlaceholder class will be
+     * added to the dnd-list while the user is dragging
+     * over it.
+     */
+
+  /*
+     * The dnd-lists's child elements currently MUST have
+     * position: relative. Otherwise we can not determine
+     * whether the mouse pointer is in the upper or lower
+     * half of the element we are dragging over. In other
+     * browsers we can use event.offsetY for this.
+     */
+
+  /*
+     * Show selected elements in green
+     */
+
+  /*--------------------------*/
+
+  /*YOU CAN CHANGE THINGS NOW*/
+
+}
+.propertyfile-content .propertyfile-panel div.busy {
+  background: url('../Media/Images/Gui/Spinner/circle-preloader.gif') no-repeat center center;
+  position: absolute;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+}
+.propertyfile-content .propertyfile-panel > header {
+  background-color: #b3b3b3;
+  border-bottom: 1px solid #a3a3a5;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+}
+.propertyfile-content .propertyfile-panel > header > .brand {
+  display: inline-block;
+  padding: 10px 12px;
+}
+.propertyfile-content .propertyfile-panel > header > .title {
+  color: #43276f;
+  align-items: center;
+  padding-left: 15px;
+  flex-grow: 1;
+}
+.propertyfile-content .propertyfile-panel > header > .title > h1 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 2px 0 0 0;
+}
+.propertyfile-content .propertyfile-panel .enable-text {
+  font-size: 1.1em;
+}
+.propertyfile-content .propertyfile-panel .body {
+  flex-grow: 1;
+}
+.propertyfile-content .propertyfile-panel .content-margin {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.propertyfile-content .propertyfile-panel .success-banner {
+  background-color: #2aabe4;
+  min-height: 50px;
+  color: white;
+}
+.propertyfile-content .propertyfile-panel .microsite-list-header {
+  background-color: #bdbdbe;
+  color: white;
+  display: flex;
+  align-items: center;
+  min-height: 25px;
+  margin-bottom: 0px;
+}
+.propertyfile-content .propertyfile-panel .microsite-container {
+  border: 1px solid #cccccc;
+}
+.propertyfile-content .propertyfile-panel .microsite-add-header {
+  border-bottom: 1px solid #cccccc;
+  min-height: 35px;
+  display: flex;
+  align-items: middle;
+}
+.propertyfile-content .propertyfile-panel .microsite-details-panel {
+  margin: 15px;
+}
+.propertyfile-content .propertyfile-panel .domain-addon {
+  border: 1px solid #2aabe4;
+  background-color: #ccf2ff;
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .square {
+  background-color: #2aabe4;
+  margin: 5px auto auto auto;
+  min-height: 30px;
+  max-width: 40px;
+}
+.propertyfile-content .propertyfile-panel .tab-list {
+  margin: 5px auto auto auto;
+}
+.propertyfile-content .propertyfile-panel .tab-list a {
+  text-decoration: none;
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .tab-list .active a {
+  background-color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .tab-list .active a:hover {
+  background-color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .tab-list .active a:focus {
+  background-color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .tab-content {
+  margin: 5px;
+}
+.propertyfile-content .propertyfile-panel .right-border {
+  border-right: 1px solid #cccccc;
+}
+.propertyfile-content .propertyfile-panel .branches-list-header {
+  color: white;
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.propertyfile-content .propertyfile-panel .branches-list-header-button-container {
+  min-height: 25px;
+  padding-top: 5px;
+  padding-right: 6px;
+}
+.propertyfile-content .propertyfile-panel .branches-list-header-button {
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 5px;
+  color: white;
+}
+.propertyfile-content .propertyfile-panel .available-branches {
+  background-color: #b3b3b3;
+  min-height: 25px;
+}
+.propertyfile-content .propertyfile-panel .selected-branches {
+  background-color: #2aabe4;
+  min-height: 25px;
+}
+.propertyfile-content .propertyfile-panel .available-branches-box {
+  border: 1px solid #b3b3b3;
+  min-height: 100px;
+  position: relative;
+}
+.propertyfile-content .propertyfile-panel .selected-branches-box {
+  border: 1px solid #2aabe4;
+  min-height: 100px;
+  position: relative;
+}
+.propertyfile-content .propertyfile-panel .maintenance-configuration {
+  background-color: #2aabe4;
+  min-height: 25px;
+}
+.propertyfile-content .propertyfile-panel .maintenance-configuration-header {
+  color: white;
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.propertyfile-content .propertyfile-panel .maintenance-configuration-box {
+  border: 1px solid #2aabe4;
+  min-height: 50px;
+  position: relative;
+}
+.propertyfile-content .propertyfile-panel .maintenance-share-text {
+  padding-top: 7px !important;
+}
+.propertyfile-content .propertyfile-panel .maintenance-configuration-container {
+  z-index: 999;
+  width: 100%;
+}
+.propertyfile-content .propertyfile-panel .cancel-button {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+.propertyfile-content .propertyfile-panel .branches-list-placeholder {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+  color: #cccccc;
+  opacity: 0.8;
+}
+.propertyfile-content .propertyfile-panel .branches-list-overlay {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.propertyfile-content .propertyfile-panel .branches-list-container {
+  z-index: 999;
+  width: 100%;
+  /*position: absolute;*/
+
+}
+.propertyfile-content .propertyfile-panel .branch-item {
+  background-color: #f7f7f7;
+  border: 1px solid #b3b3b3;
+}
+.propertyfile-content .propertyfile-panel .branch-item .icon {
+  float: left;
+  margin: 3px 3px -3px 3px;
+}
+.propertyfile-content .propertyfile-panel .branch-item .branch-header {
+  font-weight: bold;
+  color: #2aabe4;
+  margin-top: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  max-width: inherit;
+}
+.propertyfile-content .propertyfile-panel .branch-item.disabled {
+  background-color: #efefef !important;
+  cursor: not-allowed;
+  color: #959c9e !important;
+}
+.propertyfile-content .propertyfile-panel .branch-item.disabled .branch-header {
+  color: #959c9e !important;
+}
+.propertyfile-content .propertyfile-panel .branch-padding {
+  padding: 2px 2px 2px 2px;
+}
+.propertyfile-content .propertyfile-panel .drag-and-drop .draggable {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  /* Apply a "closed-hand" cursor during drag operation. */
+
+}
+.propertyfile-content .propertyfile-panel .drag-and-drop .draggable:hover {
+  background-color: #c5e4fc;
+}
+.propertyfile-content .propertyfile-panel .drag-and-drop .draggable:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+.propertyfile-content .propertyfile-panel .existing-group-admin-btn {
+  color: #2aabe4;
+  margin: 8px 0px 2px 0px;
+}
+.propertyfile-content .propertyfile-panel .group-branch-count {
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+.propertyfile-content .propertyfile-panel .existing-group-row {
+  margin-bottom: 0px;
+}
+.propertyfile-content .propertyfile-panel .existing-group-row .group-row {
+  margin-bottom: 0px;
+}
+.propertyfile-content .propertyfile-panel .existing-group-row .group-row:nth-child(odd) {
+  background-color: #efefef;
+}
+.propertyfile-content .propertyfile-panel .existing-group-row .group-row:nth-child(even) {
+  background-color: #f7f7f7;
+}
+.propertyfile-content .propertyfile-panel .subdomainColumn {
+  line-height: 40px;
+}
+.propertyfile-content .propertyfile-panel .subdomainColumn .centreText {
+  margin-top: auto;
+  margin-left: auto;
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper {
+  display: flex;
+  padding-top: 4px;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle'] {
+  max-height: 0;
+  max-width: 0;
+  opacity: 0;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle'],
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper label[id^='propertyfile-status-toggle-label'] {
+  display: block;
+  position: relative;
+  box-shadow: inset 0 0 0px 1px #d5d5d5;
+  text-indent: -500px;
+  height: 20px;
+  width: 39px;
+  border-radius: 15px;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle']:before,
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper label[id^='propertyfile-status-toggle-label']:before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 21px;
+  width: 20px;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  background: rgba(19, 191, 17, 0);
+  -moz-transition: 0.25s ease-in-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle']:after,
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper label[id^='propertyfile-status-toggle-label']:after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 20px;
+  width: 20px;
+  top: 0;
+  left: 0px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+  -moz-transition: 0.25s ease-in-out;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle']:checked + label[id^='propertyfile-status-toggle-label']:before {
+  width: 40px;
+  background: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle']:checked + label[id^='propertyfile-status-toggle-label']:after {
+  left: 20px;
+  box-shadow: inset 0 0 0 1px #2aabe4, 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.propertyfile-content .propertyfile-panel .propertyfile-status-toggle-wrapper input[id^='propertyfile-status-toggle']:disabled + label[id^='propertyfile-status-toggle-label']:before {
+  background: rgba(19, 191, 17, 0) !important;
+}
+.propertyfile-content .propertyfile-panel .defaultIcon {
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .disabledIcon {
+  color: #bdbdbe;
+}
+.propertyfile-content .propertyfile-panel .errorIcon {
+  color: #ff0045;
+}
+.propertyfile-content .propertyfile-panel .homeIcon {
+  font-size: 3em;
+}
+.propertyfile-content .propertyfile-panel .successIcon {
+  color: #5cb85c;
+}
+.propertyfile-content .propertyfile-panel .addIcon {
+  margin: 5px auto -5px;
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel .icon-line-height {
+  line-height: 35px;
+}
+.propertyfile-content .propertyfile-panel .noFloat {
+  float: none;
+}
+.propertyfile-content .propertyfile-panel .spacer10 {
+  margin-bottom: 10px;
+}
+.propertyfile-content .propertyfile-panel .spacer15 {
+  margin-bottom: 15px;
+}
+.propertyfile-content .propertyfile-panel .spacer20 {
+  margin-bottom: 20px;
+}
+.propertyfile-content .propertyfile-panel .spacer30 {
+  margin-bottom: 30px;
+}
+.propertyfile-content .propertyfile-panel .clear {
+  clear: both;
+}
+.propertyfile-content .propertyfile-panel .hideElement {
+  visibility: hidden;
+}
+.propertyfile-content .propertyfile-panel .loading {
+  background: url(/content/Styles/images/ui-anim_basic_16x16.gif) no-repeat;
+  min-height: 30px;
+}
+.propertyfile-content .propertyfile-panel .flex-centre {
+  display: flex;
+  align-items: center;
+}
+.propertyfile-content .propertyfile-panel .clear-column-padding {
+  padding: 0px;
+}
+.propertyfile-content .propertyfile-panel .error {
+  border-color: red;
+}
+.propertyfile-content .propertyfile-panel .availabilityHighlight {
+  font-weight: bold;
+  color: #2aabe4;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list],
+.propertyfile-content .propertyfile-panel ul[dnd-list] > li {
+  position: relative;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list] {
+  min-height: 100px;
+  padding: 2px;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list] .dndDraggingSource {
+  display: none;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list] .dndPlaceholder {
+  display: block;
+  margin-top: 1px;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list] li {
+  display: block;
+}
+.propertyfile-content .propertyfile-panel ul[dnd-list] li.selected {
+  background-color: #dff0d8;
+  color: #2aabe4;
+}

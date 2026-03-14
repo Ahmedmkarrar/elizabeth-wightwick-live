@@ -1,0 +1,56 @@
+
+.jstree-default li, 
+.jstree-default ins { background-image:url("d.png"); background-repeat:no-repeat; background-color:transparent; margin-bottom: 2px;}
+.jstree-default li { background-position:-90px 0; background-repeat:repeat-y; }
+.jstree-default li.jstree-last { background:transparent; }
+.jstree-default .jstree-open > ins { background-position:-72px 0; }
+.jstree-default .jstree-closed > ins { background-position:-54px 0; }
+.jstree-default .jstree-leaf > ins { background-position:-36px 0; }
+
+.jstree-default .jstree-hovered { background:#e7f4f9; border:1px solid #d8f0fa; padding:0 2px 0 1px; }
+.jstree-default .jstree-clicked { background:#beebff; border:1px solid #99defd; padding:0 2px 0 1px; }
+.jstree-default a .jstree-icon { background-position:-56px -19px; }
+.jstree-default a.jstree-loading .jstree-icon { background:url("throbber.gif") center center no-repeat !important; }
+
+.jstree-default.jstree-focused { background: #fff; }
+
+.jstree-default .jstree-no-dots li, 
+.jstree-default .jstree-no-dots .jstree-leaf > ins { background:transparent; }
+.jstree-default .jstree-no-dots .jstree-open > ins { background-position:-18px 0; }
+.jstree-default .jstree-no-dots .jstree-closed > ins { background-position:0 0; }
+
+
+
+.jstree-default .jstree-search { font-style:italic; }
+
+.jstree-checkbox 
+{
+    background-image: url(/content/media/images/gui/common/tickbox2.png) !important;
+    height: 19px !important;
+    width: 19px !important;
+    margin-right: 5px !important;
+    margin-bottom: 2px !important;
+}
+
+.jstree-default .jstree-no-icons .jstree-checkbox { display:inline-block; }
+.jstree-default .jstree-no-checkboxes .jstree-checkbox { display:none !important; }
+.jstree-default .jstree-checked > a > .jstree-checkbox { background-position: -19px 0px; }
+.jstree-default .jstree-unchecked > a > .jstree-checkbox { background-position: -0px 0px; }
+.jstree-default .jstree-undetermined > a > .jstree-checkbox { background-position: -38px 0px; }
+
+
+#jstree-marker.jstree-default { background:url("d.png") -41px -57px no-repeat !important; text-indent:-100px; }
+
+.jstree-default a.jstree-search { color:aqua; }
+.jstree-default .jstree-locked a { color:silver; cursor:default; }
+
+
+
+
+/* JS TREE ACCORDION OVERRIDES */
+.jstree li
+{
+    background: none !important;
+    border: 0 none !important;   
+    opacity: 1 !important;
+}

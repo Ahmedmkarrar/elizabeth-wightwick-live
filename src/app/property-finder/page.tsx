@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 // ─── Split Text ───────────────────────────────────────────────────────────────
 function SplitText({ text, delay = 0, className = '' }: { text: string; delay?: number; className?: string }) {

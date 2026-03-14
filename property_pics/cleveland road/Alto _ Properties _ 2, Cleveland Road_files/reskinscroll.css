@@ -1,0 +1,7 @@
+﻿.panel .layer {
+  overflow-y: auto;
+}
+
+.panel .layer .list {
+  overflow: hidden;
+}

@@ -1,0 +1,62 @@
+﻿.rssFeed
+{
+    position:relative;
+    overflow:auto;
+}
+.rssFeed a:link
+{
+    color: #ED1C24;
+    text-decoration: none;
+}
+.rssFeed a:hover
+{
+    color: #000;
+    text-decoration: underline;
+}
+
+.rssHeader
+{
+    padding: 0.2em 0;
+    display: none;
+}
+/* hidden */
+
+.rssBody
+{
+    overflow: auto;
+}
+.rssBody ul
+{
+    list-style: none;
+}
+.rssBody ul, .rssRow, .rssRow h4, .rssRow p
+{
+    margin: 0;
+    padding: 0;
+}
+
+.rssRow
+{
+    padding: 0.8em;
+}
+.rssRow h4
+{
+}
+.rssRow div
+{
+    font-size: 10px;
+    color: #666;
+    margin: 0.2em 0 0.4em 0;
+}
+.rssRow p
+{
+}
+
+.odd
+{
+    background-color: #e8e8fc;
+}
+.even
+{
+    background-color: #d4d4e8;
+}

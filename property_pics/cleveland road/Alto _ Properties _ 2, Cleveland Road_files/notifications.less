@@ -1,0 +1,80 @@
+.notifications .list-filters {
+  margin-bottom: 10px;
+}
+.notifications .list-filters a.list-filter-btn {
+  font-size: larger;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.notifications .list-filters a.list-filter-btn:hover,
+.notifications .list-filters a.list-filter-btn:focus {
+  color: #0072c6;
+}
+.notifications .list-filters a.list-filter-btn.active {
+  color: #0072c6;
+}
+.notifications-container {
+  overflow-y: auto;
+}
+.notification {
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+}
+.notification:hover {
+  background-color: #dddddd;
+}
+.notification > .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+}
+.notification > .title,
+.notification > .message {
+  margin-left: 50px;
+  margin-right: 50px;
+  line-height: 20px;
+  display: block;
+  text-overflow: ellipsis;
+  width: 330px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.notification > .title {
+  color: #333333;
+  font-weight: bold;
+}
+.notification.read > .title {
+  color: rgba(51, 51, 51, 0.5);
+}
+.notification > .message {
+  white-space: nowrap;
+  overflow-x: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.notification > .created {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  line-height: 20px;
+}
+.notification > .dismiss-button {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  line-height: 20px;
+  color: #0072c6;
+}
+.notification > .dismiss-button:hover {
+  text-decoration: underline;
+}
+.new-email-notification > .icon.new-email {
+  background-image: url('../Media/Images/Gui/Icons/32x32/email_reply_32x32.png');
+  background-repeat: no-repeat;
+  background-position: 9px 9px;
+}

@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+.button-primary,
+.button.button-primary {
+  background: #236184;
+  border-radius: 4px;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+.button-primary:hover,
+.button.button-primary:hover {
+  background: #14325f;
+  box-shadow: 0px 0px 12px rgba(50, 39, 68, 0.08), 0px 0px 1px rgba(50, 39, 68, 0.32), 0px 8px 16px -8px rgba(50, 39, 68, 0.8);
+}
+.button-primary:active,
+.button.button-primary:active {
+  background: #14325f;
+}
+.button-primary:focus,
+.button.button-primary:focus {
+  box-shadow: 0px 0px 0px 2px #fac8f0;
+}
+.button-primary.disabled,
+.button.button-primary.disabled {
+  background: #e8e7e6;
+  color: #d1d0cf;
+}
+.button-primary.disabled:hover,
+.button.button-primary.disabled:hover {
+  box-shadow: none;
+}
+.button-secondary,
+.button.button-secondary {
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #262630;
+  color: #262630;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+.button-secondary:hover,
+.button.button-secondary:hover {
+  color: white;
+  background: #262630;
+  box-shadow: 0px 0px 12px rgba(50, 39, 68, 0.08), 0px 0px 1px rgba(50, 39, 68, 0.32), 0px 8px 16px -8px rgba(50, 39, 68, 0.8);
+  border: none;
+}
+.button-secondary:active,
+.button.button-secondary:active {
+  background: #262630;
+  border: none;
+}
+.button-secondary:focus,
+.button.button-secondary:focus {
+  box-shadow: 0px 0px 0px 2px #fac8f0;
+}
+.button-secondary.disabled,
+.button.button-secondary.disabled {
+  background: white;
+  color: #d1d0cf;
+  border: 1px solid #d1d0cf;
+}
+.button-secondary.disabled:hover,
+.button.button-secondary.disabled:hover {
+  box-shadow: none;
+}
+.button-tertiary,
+.button.button-tertiary {
+  background-color: transparent;
+  color: #236184;
+  border-radius: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+.button-tertiary > span,
+.button.button-tertiary > span {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+}
+.button-tertiary:hover,
+.button.button-tertiary:hover {
+  color: #14325f;
+}
+.button-tertiary:hover > span,
+.button.button-tertiary:hover > span {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.button-tertiary.active,
+.button.button-tertiary.active {
+  color: #14325f;
+}
+.button-tertiary.disabled,
+.button.button-tertiary.disabled {
+  color: #d1d0cf;
+  text-decoration: none;
+}
+.button-tertiary > svg path,
+.button.button-tertiary > svg path {
+  fill: #236184;
+}
+.button-tertiary.active > svg path,
+.button.button-tertiary.active > svg path {
+  fill: #14325f;
+}
+.button-tertiary:hover > svg path,
+.button.button-tertiary:hover > svg path {
+  fill: #14325f;
+}
+.button-tertiary.no-label,
+.button.button-tertiary.no-label {
+  padding: 0 !important;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.button-tertiary.no-label:hover,
+.button.button-tertiary.no-label:hover {
+  box-shadow: 0px 0px 12px rgba(50, 39, 68, 0.08), 0px 0px 1px rgba(50, 39, 68, 0.32), 0px 8px 16px -8px rgba(50, 39, 68, 0.2);
+}
+.button-tertiary.contrasted > svg path,
+.button.button-tertiary.contrasted > svg path {
+  fill: white;
+}
+.button-tertiary.contrasted:hover,
+.button.button-tertiary.contrasted:hover {
+  background-color: #ffffff14;
+}
+.theme-checkbox-container > label {
+  cursor: pointer !important;
+}
+div.theme-checkbox,
+input.theme-checkbox {
+  background-color: white !important;
+  box-shadow: inset 0px 0px 0px 1px #d1d0cf !important;
+  border-radius: 4px;
+  height: 24px !important;
+  width: 24px !important;
+  -webkit-appearance: none;
+  cursor: pointer !important;
+}
+div.theme-checkbox:hover,
+input.theme-checkbox:hover {
+  box-shadow: inset 0px 0px 0px 1px #262630 !important;
+}
+div.theme-checkbox:active,
+input.theme-checkbox:active {
+  box-shadow: 0px 0px 0px 2px #fac8f0, 0px 0px 0px 1px #322744, inset 0px 0px 0px 1px #14325f !important;
+}
+div.theme-checkbox.ticked,
+input.theme-checkbox.ticked,
+div.theme-checkbox:checked,
+input.theme-checkbox:checked {
+  background-color: #262630 !important;
+  background-image: url('assets/tick-sm-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+div.theme-checkbox > input,
+input.theme-checkbox > input {
+  height: 24px !important;
+  width: 24px !important;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.theme-dropdown select.is-customised {
+  cursor: pointer;
+  z-index: 2;
+}
+.theme-dropdown select.is-customised:hover + .customStyleSelectBox {
+  box-shadow: inset 0px 0px 0px 1px #14325f;
+}
+.theme-dropdown select.is-customised:active + .customStyleSelectBox {
+  box-shadow: inset 0px 0px 0px 1px #14325f, 0px 0px 0px 2px #fac8f0;
+}
+.theme-dropdown .customStyleSelectBox {
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 0px 1px #d1d0cf;
+  padding: 10px 48px 10px 12px;
+  position: relative;
+}
+.theme-dropdown .customStyleSelectBox:before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 6px;
+  right: 12px;
+  background-image: url('assets/chevron-down-sm.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.theme-dropdown .customStyleSelectBox > .customStyleSelectBoxInner {
+  font-family: 'Lato', sans-serif;
+}

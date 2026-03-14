@@ -1,0 +1,139 @@
+/*
+    This stylesheet is for styling Bootstrap to Alto's own style
+*/
+.bootstrap {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 16px;
+}
+.bootstrap .btn {
+  border-radius: 0;
+}
+.bootstrap .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+.bootstrap .btn-group input {
+  position: absolute;
+  z-index: -1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.bootstrap .form-horizontal .form-group-lg {
+  margin-bottom: 30px;
+}
+.bootstrap .form-horizontal .form-group-lg .control-label {
+  padding-top: 14px;
+  font-size: 14px;
+}
+.bootstrap .btn-lg {
+  padding: 10px 25px !important;
+}
+.bootstrap .form-horizontal .form-group-lg.radio-paddle-group .control-label {
+  padding-top: 45px !important;
+}
+.bootstrap .panel {
+  border-radius: 0;
+}
+.bootstrap .help-block {
+  margin-bottom: 6px;
+}
+.bootstrap .alert {
+  border-radius: 0;
+}
+.bootstrap .form-control,
+.bootstrap .dropdown-menu,
+.bootstrap .input-group .form-control:last-child,
+.bootstrap .input-group-addon:first-child {
+  border-radius: 0;
+}
+.bootstrap .list-group.menu > .list-group-item > .fa {
+  float: right;
+  line-height: inherit;
+}
+.bootstrap .list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.bootstrap .list-group-item:last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.bootstrap .modal {
+  display: flex !important;
+  height: 100%;
+}
+.bootstrap .modal.fade .modal-dialog {
+  transition: none;
+  transform: none;
+}
+.bootstrap .modal .modal-dialog {
+  margin: auto;
+}
+.bootstrap .modal .modal-dialog.modal-fs {
+  width: 100%;
+  margin: 30px;
+}
+.bootstrap .modal .modal-dialog.modal-fs .modal-content {
+  height: 100%;
+}
+.bootstrap .modal .modal-dialog .modal-close a {
+  display: block;
+}
+.bootstrap .modal .modal-dialog .modal-content {
+  border-radius: 0;
+}
+.bootstrap .modal .modal-dialog .modal-content .full-height .modal-body {
+  height: 620px;
+}
+.bootstrap .modal .modal-dialog .modal-header {
+  text-align: center;
+  color: white;
+  background-color: #505050;
+  font-size: 15px;
+  padding: 7px;
+}
+.bootstrap .modal .modal-dialog .modal-header.modal-header-light {
+  background-color: #c3c3c3;
+  border-bottom: 1px solid #9c9c9c;
+}
+.bootstrap .modal .modal-dialog .modal-header > .modal-title h4 {
+  line-height: inherit;
+  margin: 2px 0 0 0;
+}
+.bootstrap .modal .modal-dialog .modal-body {
+  background-color: #eaeaea;
+  max-height: 620px;
+  overflow-y: auto;
+}
+.bootstrap .modal .modal-dialog .modal-body > p {
+  font-size: 13px;
+}
+.bootstrap .modal .modal-dialog .modal-footer {
+  padding: 5px;
+  background-color: #e3e3e3;
+}
+.bootstrap .modal .panel-heading h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+  margin: 0;
+  font-size: 13px;
+}
+.bootstrap .modal .panel-heading .navbar-nav + h3 {
+  display: inline;
+}
+.bootstrap .table.table-hover tr {
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  .bootstrap .modal-dialog.modal-lg {
+    width: 984px;
+  }
+}
+@media (max-height: 768px) {
+  .bootstrap .modal .modal-dialog .modal-content > .full-height .modal-body {
+    height: 500px;
+  }
+  .bootstrap .modal .modal-dialog .modal-body {
+    max-height: 500px;
+  }
+}

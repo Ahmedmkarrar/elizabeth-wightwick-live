@@ -1,0 +1,183 @@
+﻿@media all and (max-width: 1100px) {
+
+    .responsive-width-175-600 {
+        width: 175px!important;
+    }
+    .responsive-width-200-400 {
+        width: 175px;
+    }
+    .responsive-width-200-450 {
+        width: 200px;
+    }
+
+    .hide-1100 {
+        display:none;
+    }
+}
+
+@media all and (max-width: 1200px) and (min-width: 1101px) {
+    .responsive-width-200-400 {
+        width: 250px;
+    }
+    .responsive-width-200-450 {
+        width: 275px;
+    }
+}
+
+@media all and (max-width: 1400px) and (min-width: 1201px) {
+    .responsive-width-175-600 {
+        width: 392px;
+    }
+    .responsive-width-200-400 {
+        width: 300px;
+    }
+    .responsive-width-200-450 {
+        width: 350px;
+    }
+}
+
+@media all and (min-width: 1401px) {
+    .responsive-width-175-600 {
+        width: 392px;
+    }
+    .responsive-width-200-400 {
+        width: 400px;
+    }
+    .responsive-width-200-450 {
+        width: 450px;
+    }
+}
+
+@media all and (max-width: 1279px) {
+    .responsive-width-100-400 {
+        width: 100px;
+    }
+
+    .responsive-width-175-600 {
+        width: 200px;
+    }
+
+    .responsive-width-50-100 {
+        width: 50px !important;
+    }
+
+    .responsive-width-80-160 {
+        width: 80px !important;
+    }
+
+    .responsive-width-130-200 {
+        width: 130px !important;
+    }
+
+    .feedback-mode[data-feedback-mode="Notes"]:after {
+        content: "Notes";
+    }
+
+    .leads .counter-suffix {
+        display: none;
+    }
+}
+
+@media all and (max-width: 1365px) and (min-width: 1280px) {
+    .responsive-width-100-400 {
+        width: 250px;
+    }
+
+    .responsive-width-175-600 {
+        width: 336px;
+    }
+
+    .responsive-width-80-160 {
+        width: 110px !important;
+    }
+
+    .responsive-width-50-100 {
+        width: 60px !important;
+    }
+
+    .responsive-width-130-200 {
+        width: 150px !important;
+    }
+
+    .feedback-mode[data-feedback-mode="Notes"]:after {
+        content: "Internal Notes";
+    }
+}
+
+@media all and (max-width: 1439px) and (min-width: 1366px) {
+    .responsive-width-100-400 {
+        width: 300px;
+    }
+
+    .responsive-width-175-600 {
+        width: 336px;
+    }
+
+    .responsive-width-50-100 {
+        width: 80px !important;
+    }
+
+    .responsive-width-80-160 {
+        width: 120px !important;
+    }
+
+    .responsive-width-130-200 {
+        width: 160px !important;
+    }
+
+    .feedback-mode[data-feedback-mode="Notes"]:after {
+        content: "Internal Notes";
+    }
+}
+
+@media all and (max-width: 1599px) and (min-width: 1440px) {
+    .responsive-width-100-400 {
+        width: 320px;
+    }
+
+    .responsive-width-175-600 {
+        width: 336px;
+    }
+
+    .responsive-width-50-100 {
+        width: 90px !important;
+    }
+
+    .responsive-width-80-160 {
+        width: 140px !important;
+    }
+
+    .responsive-width-130-200 {
+        width: 170px !important;
+    }
+
+    .feedback-mode[data-feedback-mode="Notes"]:after {
+        content: "Internal Notes";
+    }
+}
+
+@media all and (min-width: 1600px) {
+    .responsive-width-100-400 {
+        width: 400px;
+    }
+
+    .responsive-width-175-600 {
+        width: 500px;
+    }
+
+    .responsive-width-50-100 {
+        width: 100px !important;
+    }
+
+    .responsive-width-80-160 {
+        width: 160px !important;
+    }
+
+    .responsive-width-130-200 {
+        width: 200px !important;
+    }
+
+    .feedback-mode[data-feedback-mode="Notes"]:after {
+        content: "Internal Notes";
+    }
+}

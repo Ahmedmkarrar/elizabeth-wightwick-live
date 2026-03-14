@@ -245,8 +245,8 @@ export default function EditPropertyPage() {
           </p>
           <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2 mb-6">
             {property.images.slice(0, 8).map((img, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
               <div key={i} className="relative aspect-square bg-beige overflow-hidden group">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={img} alt="" className="w-full h-full object-cover" />
                 {i === 0 && (
                   <span className="absolute bottom-0 left-0 right-0 bg-brand text-white text-[8px] font-inter text-center py-0.5">

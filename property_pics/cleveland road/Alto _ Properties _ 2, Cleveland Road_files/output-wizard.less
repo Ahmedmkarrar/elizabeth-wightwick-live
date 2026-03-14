@@ -1,0 +1,46 @@
+#message-pane {
+  margin-top: 5px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+#message-pane input[type="text"] {
+  width: 100%;
+  padding: 0px 3px !important;
+  box-sizing: border-box;
+  height: 23px;
+}
+#message-pane textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+#message-pane #email-section,
+#message-pane #letter-section,
+#message-pane #sms-section {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+#message-pane #email-section,
+#message-pane #letter-section {
+  flex: 2;
+}
+#message-pane #sms-section {
+  margin: 0 10px;
+  flex: 1;
+}
+#message-pane #sms-section .charCounter {
+  width: auto !important;
+  display: flex;
+  align-items: stretch;
+}
+#message-pane #sms-section .charCounter .progress-bar-container {
+  flex: 1;
+  position: relative;
+  margin-right: -3px;
+}
+#message-pane #sms-section .charCounter .count {
+  position: inherit;
+}
