@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw assets / working files
+/6 sandringham avenue/
+/property_pics/
+logo.png
+scripts/
