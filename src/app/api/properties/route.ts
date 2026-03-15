@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { createProperty } from '@/lib/data';
+import type { Property } from '@/types';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -12,9 +14,7 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get('page') || '1');
   const limit = parseInt(searchParams.get('limit') || '12');
 
-  let query = supabase
-    .from('properties')
-    .select('*', { count: 'exact' });
+  let query = supabase.from('properties').select('*', { count: 'exact' });
 
   if (department) query = query.eq('department', department);
   if (status) query = query.eq('status', status);
@@ -48,17 +48,12 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-
-  const { data, error } = await supabase
-    .from('properties')
-    .insert(body)
-    .select()
-    .single();
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  try {
+    const body = await request.json();
+    const property = await createProperty(body as Omit<Property, 'id' | 'created_at' | 'updated_at'>);
+    return NextResponse.json(property, { status: 201 });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  return NextResponse.json(data, { status: 201 });
 }
