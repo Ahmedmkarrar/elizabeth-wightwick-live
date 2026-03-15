@@ -1,10 +1,57 @@
 import { Property } from '@/types';
 
-const cdnBase = 'https://cdns3.estateweb.com/assets/9603/of/4/pro';
+// Curated luxury property image sets from Unsplash
+const LUXURY_HOUSE = [
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80',
+  'https://images.unsplash.com/photo-1631679706909-1c6990003e38?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80',
+];
 
-function imgRange(ref: string, count: number, max = 6): string[] {
-  return Array.from({ length: Math.min(count, max) }, (_, i) => `${cdnBase}/${ref}/main/${i + 1}.jpg`);
-}
+const GRAND_HOUSE = [
+  'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1631679706909-1c6990003e38?w=1600&q=80',
+];
+
+const MODERN_HOUSE = [
+  'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80',
+  'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616594039-fda9d38611c3?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1600&q=80',
+];
+
+const PERIOD_HOUSE = [
+  'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80',
+  'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80',
+];
+
+const FLAT_IMAGES = [
+  'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80',
+  'https://images.unsplash.com/photo-1631679706909-1c6990003e38?w=1600&q=80',
+  'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80',
+];
+
+const SEMI_HOUSE = [
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80',
+  'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1600&q=80',
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80',
+  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80',
+  'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80',
+];
 
 export const mockProperties: Property[] = [
   // ===== SALES =====
@@ -33,9 +80,8 @@ export const mockProperties: Property[] = [
       'Beautifully landscaped grounds',
       'Excellent transport links',
     ],
-    images: imgRange('34407374', 32),
-    main_image: `${cdnBase}/34407374/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/34407374/floorplans/1.jpg`,
+    images: LUXURY_HOUSE,
+    main_image: LUXURY_HOUSE[0],
     tenure: 'Freehold',
     featured: true,
     latitude: 51.4178,
@@ -68,9 +114,8 @@ export const mockProperties: Property[] = [
       'Sonos music system throughout',
       '8,000 sq ft total land area',
     ],
-    images: imgRange('34365370', 40),
-    main_image: `${cdnBase}/34365370/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/34365370/floorplans/1.jpg`,
+    images: GRAND_HOUSE,
+    main_image: GRAND_HOUSE[0],
     tenure: 'Freehold',
     featured: true,
     latitude: 51.4230,
@@ -103,9 +148,8 @@ export const mockProperties: Property[] = [
       'Excellent transport links',
       'Near outstanding schools',
     ],
-    images: imgRange('34361420', 24),
-    main_image: `${cdnBase}/34361420/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/34361420/floorplans/1.jpg`,
+    images: MODERN_HOUSE,
+    main_image: MODERN_HOUSE[0],
     tenure: 'Freehold',
     featured: true,
     latitude: 51.3920,
@@ -138,8 +182,8 @@ export const mockProperties: Property[] = [
       'Sought-after Groves area',
       'Approximately 1,500 sq ft',
     ],
-    images: imgRange('33829021', 25),
-    main_image: `${cdnBase}/33829021/main/1.jpg`,
+    images: PERIOD_HOUSE,
+    main_image: PERIOD_HOUSE[0],
     tenure: 'Freehold',
     featured: false,
     latitude: 51.3930,
@@ -172,8 +216,8 @@ export const mockProperties: Property[] = [
       'Near Richmond Park',
       'Excellent schools nearby',
     ],
-    images: imgRange('34420620', 13),
-    main_image: `${cdnBase}/34420620/main/1.jpg`,
+    images: SEMI_HOUSE,
+    main_image: SEMI_HOUSE[0],
     featured: false,
     latitude: 51.3935,
     longitude: -0.2570,
@@ -205,9 +249,8 @@ export const mockProperties: Property[] = [
       'Strong transport links',
       'Easy A3 access',
     ],
-    images: imgRange('33377176', 18),
-    main_image: `${cdnBase}/33377176/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/33377176/floorplans/1.jpg`,
+    images: PERIOD_HOUSE,
+    main_image: PERIOD_HOUSE[0],
     featured: false,
     latitude: 51.3940,
     longitude: -0.2565,
@@ -346,9 +389,8 @@ export const mockProperties: Property[] = [
       'Chain free',
       'Prime location',
     ],
-    images: imgRange('33414946', 6),
-    main_image: `${cdnBase}/33414946/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/33414946/floorplans/1.png`,
+    images: FLAT_IMAGES,
+    main_image: FLAT_IMAGES[0],
     tenure: 'Leasehold',
     featured: false,
     latitude: 51.4350,
@@ -379,9 +421,8 @@ export const mockProperties: Property[] = [
       '0.4 miles to Southfields tube',
       'Extension potential (STPP)',
     ],
-    images: imgRange('33639883', 11),
-    main_image: `${cdnBase}/33639883/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/33639883/floorplans/1.png`,
+    images: FLAT_IMAGES,
+    main_image: FLAT_IMAGES[0],
     tenure: 'Share of Freehold',
     featured: false,
     latitude: 51.4445,
@@ -485,9 +526,8 @@ export const mockProperties: Property[] = [
       'Landscaped grounds',
       'Prime Wimbledon location',
     ],
-    images: imgRange('33767440', 17),
-    main_image: `${cdnBase}/33767440/main/1.jpg`,
-    floor_plan_url: `${cdnBase}/33767440/floorplans/1.jpg`,
+    images: LUXURY_HOUSE,
+    main_image: LUXURY_HOUSE[0],
     featured: true,
     latitude: 51.4280,
     longitude: -0.2180,
@@ -593,8 +633,8 @@ export const mockProperties: Property[] = [
       'Beautifully landscaped grounds',
       'Excellent transport links',
     ],
-    images: imgRange('34404175', 32),
-    main_image: `${cdnBase}/34404175/main/1.jpg`,
+    images: GRAND_HOUSE,
+    main_image: GRAND_HOUSE[0],
     featured: true,
     latitude: 51.4178,
     longitude: -0.2245,
@@ -626,8 +666,8 @@ export const mockProperties: Property[] = [
       'Four bathrooms',
       'Ample storage throughout',
     ],
-    images: imgRange('33311477', 22),
-    main_image: `${cdnBase}/33311477/main/1.jpg`,
+    images: MODERN_HOUSE,
+    main_image: MODERN_HOUSE[0],
     featured: false,
     latitude: 51.4310,
     longitude: -0.2220,
@@ -730,8 +770,8 @@ export const mockProperties: Property[] = [
       'Three reception rooms',
       'Near Wimbledon Village',
     ],
-    images: imgRange('34244275', 24),
-    main_image: `${cdnBase}/34244275/main/1.jpg`,
+    images: GRAND_HOUSE,
+    main_image: GRAND_HOUSE[0],
     featured: false,
     latitude: 51.4275,
     longitude: -0.2080,
