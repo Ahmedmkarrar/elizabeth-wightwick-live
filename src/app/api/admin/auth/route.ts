@@ -1,27 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
   const { email, password } = await request.json();
 
-  if (!email || !password) {
-    return NextResponse.json(
-      { error: 'Email and password are required' },
-      { status: 400 }
-    );
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
+    return NextResponse.json({ error: 'Server not configured' }, { status: 500 });
   }
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) {
-    return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+  if (email === adminEmail && password === adminPassword) {
+    return NextResponse.json({ success: true });
   }
 
-  return NextResponse.json({
-    user: data.user,
-    session: data.session,
-  });
+  // Small delay to slow brute force
+  await new Promise((r) => setTimeout(r, 500));
+  return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
 }

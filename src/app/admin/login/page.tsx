@@ -4,9 +4,6 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 
-const DEMO_EMAIL = 'info@elizabeth-wightwick.co.uk';
-const DEMO_PASSWORD = 'EW2025admin!';
-
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,15 +16,24 @@ export default function AdminLoginPage() {
     setError('');
     setLoading(true);
 
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
-      sessionStorage.setItem('ew-admin-auth', 'true');
-      router.push('/admin');
-    } else {
-      setError('Invalid email or password');
+      if (res.ok) {
+        sessionStorage.setItem('ew-admin-auth', 'true');
+        router.push('/admin');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -55,6 +61,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
               required
+              autoComplete="email"
               className="w-full border border-taupe/30 px-4 py-3 text-[14px] font-inter text-charcoal placeholder:text-slate/40 focus:outline-none focus:border-brand transition-colors"
             />
           </div>
@@ -69,6 +76,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter password"
               required
+              autoComplete="current-password"
               className="w-full border border-taupe/30 px-4 py-3 text-[14px] font-inter text-charcoal placeholder:text-slate/40 focus:outline-none focus:border-brand transition-colors"
             />
           </div>
