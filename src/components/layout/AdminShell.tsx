@@ -1,14 +1,35 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import AdminNav from '@/components/layout/AdminNav';
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const isLogin = pathname === '/admin/login';
+
+  useEffect(() => {
+    if (!isLogin) {
+      const authed = sessionStorage.getItem('ew-admin-auth');
+      if (!authed) {
+        router.replace('/admin/login');
+      }
+    }
+  }, [isLogin, router]);
 
   if (isLogin) {
     return <>{children}</>;
+  }
+
+  // Don't render protected content until auth is confirmed
+  const authed = typeof window !== 'undefined' && sessionStorage.getItem('ew-admin-auth');
+  if (!authed) {
+    return (
+      <div className="min-h-screen bg-[#f7f7f5] flex items-center justify-center">
+        <div className="text-[13px] font-inter text-slate/40">Checking authentication...</div>
+      </div>
+    );
   }
 
   return (

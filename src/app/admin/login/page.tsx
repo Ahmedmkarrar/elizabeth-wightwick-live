@@ -82,20 +82,9 @@ export default function AdminLoginPage() {
           </Button>
         </form>
 
-        {/* Demo Credentials */}
-        <div className="mt-6 bg-white/5 border border-white/10 p-5">
-          <p className="text-[11px] font-inter uppercase tracking-[0.2em] text-white/40 mb-3">Demo Credentials</p>
-          <div className="space-y-1.5">
-            <p className="text-[13px] font-inter text-white/70">
-              <span className="text-white/40">Email:</span>{' '}
-              <span className="select-all">{DEMO_EMAIL}</span>
-            </p>
-            <p className="text-[13px] font-inter text-white/70">
-              <span className="text-white/40">Password:</span>{' '}
-              <span className="select-all">{DEMO_PASSWORD}</span>
-            </p>
-          </div>
-        </div>
+        <p className="mt-6 text-center text-[12px] font-inter text-white/30">
+          Contact your administrator for access.
+        </p>
       </div>
     </div>
   );
