@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Property } from '@/types';
 import { formatPriceFull, isNewListing } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
@@ -40,12 +39,11 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             className="absolute inset-0 transition-opacity duration-500"
             style={{ opacity: imgIndex === i ? 1 : 0 }}
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={img}
               alt={address}
-              fill
-              className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
             />
           </div>
         ))}
