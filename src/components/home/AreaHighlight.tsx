@@ -19,9 +19,10 @@ export default function AreaHighlight() {
             className="absolute inset-0"
           >
             <Image
-              src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80"
+              src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
               alt="Wimbledon Village"
               fill
+              unoptimized
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />

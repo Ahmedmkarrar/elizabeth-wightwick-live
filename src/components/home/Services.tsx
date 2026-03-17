@@ -52,6 +52,7 @@ export default function Services() {
                         src={section.image}
                         alt={section.title}
                         fill
+                        unoptimized
                         className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                       />

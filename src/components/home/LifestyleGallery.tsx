@@ -77,6 +77,7 @@ export default function LifestyleGallery() {
                   src={img.src}
                   alt={img.alt}
                   fill
+                  unoptimized
                   className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
