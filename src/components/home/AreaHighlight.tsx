@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
@@ -18,13 +17,11 @@ export default function AreaHighlight() {
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
               alt="Wimbledon Village"
-              fill
-              unoptimized
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </motion.div>
         </div>

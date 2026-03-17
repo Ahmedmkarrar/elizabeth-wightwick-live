@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
@@ -48,13 +47,11 @@ export default function Services() {
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="relative aspect-[4/5] overflow-hidden bg-beige">
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={section.image}
                         alt={section.title}
-                        fill
-                        unoptimized
-                        className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-105"
                       />
                     </div>
                   </motion.div>

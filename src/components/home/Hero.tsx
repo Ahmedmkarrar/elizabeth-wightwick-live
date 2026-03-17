@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { formatPrice } from '@/lib/utils';
@@ -152,14 +151,11 @@ export default function Hero() {
             transform: `translateY(${scrollY * 0.15}px) scale(${1 + scrollY * 0.0002})`,
           }}
         >
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={s.image}
             alt={s.title}
-            fill
-            className="object-cover animate-ken-burns"
-            priority={i === 0}
-            sizes="100vw"
-            unoptimized={s.image.includes('unsplash.com')}
+            className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
           />
         </div>
       ))}
